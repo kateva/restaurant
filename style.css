@@ -1,0 +1,15 @@
+@charset "utf-8";
+/* CSS Document */
+
+body {background-color:#000; color:#fff; font-family: arial, helvetica, sans-serif;}
+@keyframes reveal {
+	0% {color:rgba(218, 185, 30, 0.0);}
+	100% {color:rgba(218, 185, 30, 1.0);}
+}
+.container {width:800px; margin:0 auto; text-align:center;}
+.logo {text-align:center;}
+.add {margin-top:40px;}
+h1 {font: 48px "Helvetica Neue", arial, san-serif; text-align:center;margin-top:50px; animation-name:reveal; animation-duration:8s;animation-fill-mode: forwards;}
+h2 {font: 24px "Helvetica Neue", arial, san-serif; color: #fff; text-align:center;margin-top:30px;}
+h3 {font: 18px "Helvetica Neue", arial, san-serif; color: #fff; text-align:center;margin-top:50px;}
+button {display:block; height:50px; width:150px; margin:auto; background-color: #8c0303; font: bold 16px "Helvetica Neue", arial, san-serif; color: #fff; text-align:center; border:solid 1px #fff; border-radius:5px;}
