@@ -4,17 +4,17 @@
 //let restaurantsR = ['Nicos', 'Jimmychangas', 'Lelia', 'Grease', 'Roxys', 'Palm Sugar', 'SubWay', 'Jimmy Johns']
 
 let restaurants = [
-	{name: 'Nicos', approved: 'yes'},
-	{name: 'Jimmychangas', approved: 'yes'},
-	{name: 'Lelia', approved: 'yes'},
-	{name: 'Grease', approved: 'yes'},
-	{name: 'Roxys', approved: 'yes'},
-	{name: 'Palm Sugar', approved: 'yes'},
-	{name: 'SubWay', approved: 'yes'},
-	{name: 'Jimmy Johns', approved: 'yes'},
-	{name: 'Sweet Tomato', approved: 'no'},
-	{name: 'Anzo', approved: 'no'},
-	{name: 'Field of Greens', approved: 'no'}
+	{name: 'Nicos', approved: true},
+	{name: 'Jimmychangas', approved: true},
+	{name: 'Lelia', approved: true},
+	{name: 'Grease', approved: true},
+	{name: 'Roxys', approved: true},
+	{name: 'Palm Sugar', approved: true},
+	{name: 'SubWay', approved: true},
+	{name: 'Jimmy Johns', approved: true},
+	{name: 'Sweet Tomato', approved: false},
+	{name: 'Anzo', approved: false},
+	{name: 'Field of Greens', approved: false}
 ]
 
 const addRest = document.getElementById('addRest');
@@ -26,36 +26,33 @@ function print(message) {
 }
 
 function choose () {
-	let isRamiro = document.getElementById('ramiro').checked;
-	let number = Math.floor( Math.random() * restaurants.length);
 	
-	//let numberR = Math.floor( Math.random() * restaurantsR.length);
-	let textMess = '';
-	let restaurant = '';
-	let approve = restaurants[number].approved;
+	let isRamiro = document.getElementById('ramiro').checked;
+	
+	while(true){
+		let number = Math.floor( Math.random() * restaurants.length);
 
-	if(isRamiro === true && approve === 'yes'){
-		restaurant = restaurants[number];
-		textMess = '<h2>And the restaurant is...</h2>' + '<h1>' + restaurant.name + '</h1>';
-	} else {
-		restaurant = restaurants[number];
-		textMess = '<h2>And the restaurant is...</h2>' + '<h1>' + restaurant.name + '</h1>';
-	}
-		console.log(approve);
+		//let numberR = Math.floor( Math.random() * restaurantsR.length);
+		var textMess = '';
+		let restaurant = '';
+		let approve = restaurants[number].approved;
 
+		if(isRamiro === false || restaurants[number].approved){
+			restaurant = restaurants[number];
+			textMess = '<h2>And the restaurant is...</h2>' + '<h1>' + restaurant.name + '</h1>';
+			break;
+			}
+
+	} //while
 	print(textMess);
 }
 
 
 function addNew() {
-	let newRest = document.getElementById('newRestaurant').value;
-	let ramiroApproved = document.getElementById('ramiroApproved').checked;
-	if(ramiroApproved === true) {
-		restaurants['name'] = newRest;
-		restaurants['approve'] = true;
-	} else {
-		restaurants.name = newRest;
-		restaurants.approve = false;
-	}
+	var newRestaurant = {};
+	newRestaurant.name = document.getElementById('newRestaurant').value;
+	newRestaurant.approved = document.getElementById('ramiroApproved').checked;
+	restaurants.push(newRestaurant);
+	
 	document.getElementById('newRestaurant').value = '';
 }
